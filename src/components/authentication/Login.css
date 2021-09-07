@@ -1,0 +1,7 @@
+.inner-button-fix{
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px slategrey;
+    width: 20%;
+}

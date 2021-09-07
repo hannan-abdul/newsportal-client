@@ -7,7 +7,7 @@ const Body = () => {
     const [selectedNews, setSelectedNews] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5055/allnews')
+        fetch('https://warm-ocean-89697.herokuapp.com/allnews')
             .then(res => res.json())
             .then(data => setNews(data))
     }, [])

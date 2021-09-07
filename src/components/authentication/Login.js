@@ -1,9 +1,18 @@
 import React from 'react';
+// import firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from './firebase.config';
+import "firebase/auth";
+
+
+
 
 const Login = () => {
+
+    
     return (
         <div>
-            <h5>Login</h5>
+            Login
         </div>
     );
 };
