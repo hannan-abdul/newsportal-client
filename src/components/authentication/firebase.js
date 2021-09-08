@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 const firebaseConfig = {
     apiKey: "AIzaSyDT6Ncrbq2wE_J6T786WFAnBzG-2hGJLDI",
     authDomain: "newsportal-site.firebaseapp.com",
@@ -6,4 +8,6 @@ const firebaseConfig = {
     messagingSenderId: "449653799582",
     appId: "1:449653799582:web:ed42cb679aa9607fb1598f"
   };
-  export default firebaseConfig;
+  firebase.initializeApp(firebaseConfig);
+
+  export {firebase}

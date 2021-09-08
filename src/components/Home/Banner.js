@@ -1,8 +1,7 @@
 import React from 'react';
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
-import banner1 from '../../assets/images/banner1.png';
-import banner2 from '../../assets/images/banner2.png';
-import Postwrite from '../Body/Postwrite';
+import banner1 from '../../assets/images/banner1.jpg';
+import banner2 from '../../assets/images/banner2.jpg';
 import './banner.css';
 
 
