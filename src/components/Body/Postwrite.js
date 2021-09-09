@@ -15,7 +15,7 @@ const Postwrite = () => {
       category: data.category,
       imageURL: imageURL
     };
-    const url = `http://localhost:5055/addNews`;
+    const url = `https://warm-ocean-89697.herokuapp.com/addNews`;
     console.log(newsData)
     fetch(url, {
       method: 'POST',
