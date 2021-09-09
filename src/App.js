@@ -5,6 +5,7 @@ import Postwrite from './components/Body/Postwrite';
 import Navigation from './components/Home/Navigation';
 import Login from './components/authentication/Login';
 import { createContext, useState } from 'react';
+import Admin from './components/Admin/Admin';
 export const UserContext = createContext()
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/write" component={Postwrite} />
+            <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
           </Switch>
         </Router>

@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 
 const Allnews = (props) => {
-    const { title, imageURL } = props.newsdata;
+    const { title, imageURL} = props.newsdata;
     return (
         <div className='col'>
             <Card style={{ width: '18rem' }}>
