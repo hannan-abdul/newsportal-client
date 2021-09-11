@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import EditPost from './EditPost';
+import EveryNews from './EveryNews';
 
-const ManageNews = (props) => {
-    const { title, author, _id } = props.newsdata;
+const ManageNews = () => {
+    const [news, setNews] = useState([]);
+    const [selectedNews, setSelectedNews] = useState(null);
 
-    const deleteEvent = id => {
-        console.log(id)
-        fetch(`https://warm-ocean-89697.herokuapp.com/delete/${id}`,{
-            method: 'DELETE'
-        })
+    useEffect(() => {
+        fetch('https://warm-ocean-89697.herokuapp.com/allnews')
             .then(res => res.json())
-            .then(result => {
-                console.log('news deleted')
-            })
-            .catch(error => {
-                console.error(error)
-            })
+            .then(data => setNews(data))
+    }, [])
+
+    const newsSelect = (newsselected) => {
+        console.log(newsselected)
+        setSelectedNews({ 
+            selectedNews: newsselected
+        
+        })
     }
+
+    let newsDetail = null;
+    if (selectedNews != null) {
+        newsDetail = <EditPost newsdata={selectedNews} />
+    }
+
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-3">
-                    <h6>{title}</h6>
+                <div className='col-6'>
+                    {
+                        news.map(newsdata => <EveryNews
+                            newsdata={newsdata}
+                            key={newsdata._id}
+                            newsSelect={() => newsSelect(newsdata)}
+                        />)
+                    }
                 </div>
-                <div className="col-md-3">
-                    <h5>{author}</h5>
-                </div>
-                <div className="col-md-3">
-                    <button onClick={() => deleteEvent(_id)}>Delete</button>
+                <div className="col-6">
+                    {newsDetail}
                 </div>
             </div>
         </div>
