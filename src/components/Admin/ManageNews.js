@@ -13,7 +13,7 @@ const ManageNews = () => {
     }, [])
 
     const newsSelect = (newsselected) => {
-        console.log(newsselected)
+        // console.log(newsselected)
         setSelectedNews({ 
             selectedNews: newsselected
         
@@ -33,7 +33,7 @@ const ManageNews = () => {
                         news.map(newsdata => <EveryNews
                             newsdata={newsdata}
                             key={newsdata._id}
-                            newsSelect={() => newsSelect(newsdata)}
+                            newsSelect={() => newsSelect(newsdata._id)}
                         />)
                     }
                 </div>

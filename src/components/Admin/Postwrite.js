@@ -6,14 +6,14 @@ import './Postwrite.css';
 const Postwrite = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [imageURL, setImageURL] = useState(null);
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     // console.log(data);
     const newsData = {
       title: data.title,
       author: data.author,
       description: data.description,
       category: data.category,
-      imageURL: imageURL
+      imageURL: imageURL,
     };
     const url = `https://warm-ocean-89697.herokuapp.com/addNews`;
     console.log(newsData)
@@ -24,7 +24,8 @@ const Postwrite = () => {
       },
       body: JSON.stringify(newsData)
     })
-    .then(res=> console.log('server side response', res))
+      .then(res => console.log('server side response', res))
+    // alert("item added");
   }
 
   const handleImageUpload = event => {
@@ -46,7 +47,7 @@ const Postwrite = () => {
     <div className='mt-5'>
       <h2>New Post</h2>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <input type='file' onChange={handleImageUpload} />
+        <input className="image-input" type='file' onChange={handleImageUpload} />
         <br />
         <input type='text' placeholder="News Title" {...register("title")} />
         <br />
