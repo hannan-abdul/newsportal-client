@@ -77,7 +77,7 @@ const Admin = () => {
     }
 
     const updateItem =(id) =>{
-        axios.put(`http://localhost:5055/update/${id}`, updatedItem);
+        axios.put(`https://warm-ocean-89697.herokuapp.com/update/${id}`, updatedItem);
         alert("item updated");
         console.log(`item with id ${id} updated`);
     }
@@ -96,7 +96,7 @@ const Admin = () => {
     // delete post 
     const deleteEvent = id => {
         console.log(id)
-        fetch(`http://localhost:5055/delete/${id}`, {
+        fetch(`https://warm-ocean-89697.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
