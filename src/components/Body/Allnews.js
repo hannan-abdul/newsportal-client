@@ -1,18 +1,17 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-const Allnews = (props) => {
-    const { title, imageURL} = props.newsdata;
+const Allnews = ({newdata}) => {
+    const { title, photo, category, _id} = newdata;
+    // console.log(newdata)
     return (
-        <div className='col'>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={imageURL} />
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Button onClick={props.newsSelect} variant="primary">Read More</Button>
-                </Card.Body>
-            </Card>
+        <div className=''>
+            <img style={{"width": "100%"}} src={photo} alt="image" />
+            <h3>{title}</h3>
+            <h4>{category}</h4>
+            <Button className="primary"><Link to={"/newsdetail/"+ _id}>Read More</Link>
+            </Button>
         </div>
     );
 };

@@ -1,47 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import EditPost from './EditPost';
+import DashboardMenu from '../Dashboard/DashboardMenu/DashboardMenu';
 import EveryNews from './EveryNews';
 
 const ManageNews = () => {
-    const [news, setNews] = useState([]);
-    const [selectedNews, setSelectedNews] = useState(null);
+    const [newsdata, setNewsdata] = useState([]);
 
     useEffect(() => {
-        fetch('https://warm-ocean-89697.herokuapp.com/allnews')
+        fetch('http://localhost:5050/api/news/allnews')
             .then(res => res.json())
-            .then(data => setNews(data))
+            .then(data => setNewsdata(data))
     }, [])
-
-    const newsSelect = (newsselected) => {
-        // console.log(newsselected)
-        setSelectedNews({ 
-            selectedNews: newsselected
-        
-        })
-    }
-
-    let newsDetail = null;
-    if (selectedNews != null) {
-        newsDetail = <EditPost newsdata={selectedNews} />
-    }
-
     return (
-        <div className="container">
-            <div className="row">
-                <div className='col-6'>
-                    {
-                        news.map(newsdata => <EveryNews
-                            newsdata={newsdata}
-                            key={newsdata._id}
-                            newsSelect={() => newsSelect(newsdata._id)}
-                        />)
-                    }
-                </div>
-                <div className="col-6">
-                    {newsDetail}
-                </div>
+        <section>
+            <div>
+                <DashboardMenu />
             </div>
-        </div>
+            <div className="container text-center mt-5 col-md-10 p-4 pr-5" style={{ position: "absolute", right: "-5%", top: "10%", backgroundColor: "#F4FDFB" }}>
+                <h3>Manage News</h3>
+                {
+                    newsdata.map(newdata => <EveryNews newdata={newdata} />)
+                }
+
+            </div>
+        </section>
     );
 };
 

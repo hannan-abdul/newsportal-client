@@ -1,31 +1,39 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router';
+import swal from 'sweetalert';
+import DashboardMenu from '../Dashboard/DashboardMenu/DashboardMenu';
 import './Postwrite.css';
 
 const Postwrite = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [imageURL, setImageURL] = useState(null);
-  const onSubmit = (data) => {
+  const [photo, setPhoto] = useState(null);
+  const history = useHistory();
+
+  const onSubmit = async(data) => {
     // console.log(data);
     const newsData = {
       title: data.title,
       author: data.author,
       description: data.description,
       category: data.category,
-      imageURL: imageURL,
+      photo: photo,
     };
-    const url = `https://warm-ocean-89697.herokuapp.com/addNews`;
-    console.log(newsData)
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newsData)
-    })
-      .then(res => console.log('server side response', res))
-    // alert("item added");
+    // https://warm-ocean-89697.herokuapp.com
+    try{
+      const res = await axios({
+        method: 'post',
+        url: `http://localhost:5050/api/news/addNews`,
+        data: newsData
+      })
+      swal("Successfully Added", "Your news has been successfully added!", "success");
+      console.log('server side response', res)
+      res && history.push("/manage-news")
+    }
+    catch(err){
+      console.log(err)
+    }
   }
 
   const handleImageUpload = event => {
@@ -37,29 +45,42 @@ const Postwrite = () => {
     axios.post('https://api.imgbb.com/1/upload',
       imageData)
       .then(function (response) {
-        setImageURL(response.data.data.display_url);
+        setPhoto(response.data.data.display_url);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
   return (
-    <div className='mt-5'>
-      <h2>New Post</h2>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <input className="image-input" type='file' onChange={handleImageUpload} />
-        <br />
-        <input type='text' placeholder="News Title" {...register("title")} />
-        <br />
-        <input type='text' placeholder="Author Name" {...register("author")} />
-        <br />
-        <textarea type='text' placeholder="News Description" {...register("description")} />
-        <br />
-        <input type='text' placeholder="News Category" {...register("category")} />
-        <br />
-        <input className='custom-btn' type="submit" />
-      </form>
-    </div>
+    <section>
+      <div>
+        <DashboardMenu />
+      </div>
+      <div>
+        <h2 className="my-4">New Post</h2>
+        <form className='form' onSubmit={handleSubmit(onSubmit)}>
+          <input className="image-input" type='file' onChange={handleImageUpload} />
+          <br />
+          <input type='text' placeholder="News Title" {...register("title")} />
+          <br />
+          <input type='text' placeholder="Author Name" {...register("author")} />
+          <br />
+          <textarea type='text' placeholder="News Description" {...register("description")} />
+          <br />
+          <select placeholder="Category" className="box form-control responsive-input" {...register("category")} required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="Business">Business</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Politics">Politics</option>
+            <option value="Sports">Sports</option>
+            <option value="International">International</option>
+            <option value="Other">Other</option>
+          </select>
+          <br />
+          <input className='custom-btn' type="submit" />
+        </form>
+      </div>
+    </section>
   );
 };
 

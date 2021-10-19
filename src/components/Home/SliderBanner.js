@@ -10,7 +10,7 @@ const Banner = () => {
         <div>
             <Container className='mt-4'>
                 <Row>
-                    <Col lg={9}>
+                    <Col>
                         <div className="left">
                             <Carousel>
                                 <Carousel.Item>
@@ -34,11 +34,6 @@ const Banner = () => {
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             </Carousel>
-                        </div>
-                    </Col>
-                    <Col lg={3}>
-                        <div className="right">
-                            <h2>Top News</h2>
                         </div>
                     </Col>
                 </Row>

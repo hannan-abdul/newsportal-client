@@ -1,19 +1,24 @@
-import React from 'react';
-import {Card, CardImg, CardText, CardBody,CardTitle} from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import SideBar from '../SideBar/SideBar';
+import SingleNews from './SingleNews';
 
-const NewsDetails = (props) => {
-    const {title, imageURL, description, author} = props.newsdata.selectedNews;
-    // console.log(props)
+const NewsDetails = () => {
+    const { newsKey } = useParams();
+    const [newdata, setNewsdata] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5050/api/news/' + newsKey)
+            .then(res => res.json())
+            .then(data => setNewsdata(data))
+    }, [newsKey])
     return (
-        <div>
-            <Card style={{ margin: "10px" }}>
-                <CardImg src={imageURL} />
-                <CardBody style={{ textAlign: 'left' }}>
-                    <CardTitle><h2>Title: {title}</h2></CardTitle>
-                    <CardText><strong>News details:</strong> {description}</CardText>
-                    <CardText><strong>Author Name:</strong> {author}</CardText>
-                </CardBody>
-            </Card>
+        <div className="container d-flex">
+            <div className="col-9">
+                <SingleNews newdata={newdata}></SingleNews>
+            </div>
+            <div className="col-3">
+                <SideBar />
+            </div>
         </div>
     );
 };
