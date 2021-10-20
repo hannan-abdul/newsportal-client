@@ -9,6 +9,7 @@ const MainBody = () => {
         <div className="container d-flex">
             <div className="col-md-9">
                 <SliderBanner />
+                <hr className="line-fix"/>
                 <Body />
             </div>
             <div className="col-md-3">
