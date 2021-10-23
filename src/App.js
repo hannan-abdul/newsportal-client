@@ -3,19 +3,17 @@ import Home from '../src/pages/Home/Home';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navigation from './components/Home/Navigation';
 import Login from './components/authentication/Login';
-import { createContext, useState } from 'react';
-import PrivateRoute from './components/Home/PrivateRoute';
+import PrivateRoute from './components/authentication/PrivateRoute';
 import NewsDetails from './components/Body/NewsDetails';
 import Postwrite from './components/Admin/Postwrite';
 import ManageNews from './components/Admin/ManageNews';
-
-export const UserContext = createContext()
+import SignUp from './components/authentication/SignUp';
+import About from './pages/Home/About/About';
+import Contact from './pages/Home/Contact/Contact';
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <div className="App">
-      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <Router>
           <Navigation />
           <Switch>
@@ -25,9 +23,18 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/write-news">
-              <Postwrite />
+            <Route path="/signup">
+              <SignUp />
             </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <PrivateRoute path="/write-news">
+              <Postwrite />
+            </PrivateRoute>
             <Route path="/newsdetail/:newsKey">
               <NewsDetails />
             </Route>
@@ -36,7 +43,6 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </UserContext.Provider>
     </div>
   );
 }

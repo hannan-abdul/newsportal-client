@@ -13,7 +13,7 @@ const SideBar = () => {
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit enim sint tempore suscipit sunt ullam itaque repellendus doloribus modi autem?
                 </p>
             </div>
-            <div className="sidebarItem">
+            <div className="sidebarItem text-start">
                 <span className="sidebarTitle">CATEGORIES</span>
                 <ul className="sidebarList text-start">
                     <li>Business</li>

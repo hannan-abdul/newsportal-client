@@ -1,46 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import Allnews from '../../components/Body/Allnews';
+import { useDispatch, useSelector } from 'react-redux';
 import './Body.css'
+import { newsAction } from '../../Redux/action/newsDataAction';
+import axios from 'axios';
 
 const Body = () => {
-    const [newsdata, setNewsdata] = useState([]);
-    const [categoryItem, setCategoryItem] = useState([]);
+    const dispatch = useDispatch();
+    const newsDatas = useSelector((state) => state.newsdata.allnewsdetails);
+    // const categoryData = useSelector((state) => state.newsdata.allnewsdetails[0]);
+    // console.log(categoryData)
+    // const [category, setCategory] = useState([]);
+    const [newcategory, setNewCategory] = useState([]);
+
 
     useEffect(() => {
-        // https://warm-ocean-89697.herokuapp.com
-        fetch('http://localhost:5050/api/news/allnews')
-            .then(res => res.json())
-            .then(data => setNewsdata(data))
-        // .then(data => setNewsdata(data.slice(0, 2)))
-    }, [categoryItem])
+        const getAllNews = async () => {
+            try {
+                const res = await axios.get('http://localhost:5050/api/news/allnews');
+                dispatch(newsAction(res.data))
+                // setCategory(res.data)
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        getAllNews()
+    }, [])
 
-    const filterItem = (categoryItem) =>{
-        const updatedItems = newsdata.filter((curElem) => {
-          return curElem.category === categoryItem;
-        })
-        setNewsdata(updatedItems)
-      }
+    const allFilterNews = (newsCategory) => {
+        const updatedItems = newsDatas.filter((news) => news.category === newsCategory)
+        setNewCategory(updatedItems)
+    }
 
     return (
         <div className="container text-center mt-5">
             <div>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => setNewsdata(newsdata)}>All News</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('Business')}>Business</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('Entertainment')}>Entertainment</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('Politics')}>Politics</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('Sports')}>Sports</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('International')}>international</button>
-                <button className="btn btn-secondary ms-2 mb-2" onClick={() => filterItem('Other')}>Other</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Business')}>Business</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Entertainment')}>Entertainment</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Politics')}>Politics</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Sports')}>Sports</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('International')}>international</button>
+                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Other')}>Other</button>
             </div>
             <div className='row justify-content-between'>
                 {
-                    newsdata.map(newdata =>
+                    newcategory.length ? newcategory.map(newdata =>
                         <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
                             <Allnews
                                 newdata={newdata}
                                 key={newdata._id} />
                         </div>
-                    )
+                    ) : newsDatas.map(newdata =>
+                            <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
+                                <Allnews
+                                    newdata={newdata}
+                                    key={newdata._id} />
+                            </div>
+                        )
                 }
             </div>
         </div>
@@ -48,3 +65,26 @@ const Body = () => {
 };
 
 export default Body;
+
+// https://warm-ocean-89697.herokuapp.com
+// .then(data => setNewsdata(data.slice(0, 2)))
+// <button className="btn btn-secondary ms-2 mb-2" onClick={() => setCategory(category)}>All News</button>
+
+// {
+//     newcategory.length ? newcategory.map(newdata =>
+//         <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
+//             <Allnews
+//                 newdata={newdata}
+//                 key={newdata._id} />
+//         </div>
+//     ) : newcategory.length === 0 ? <div>No Item Found</div> :
+//         category.map(newdata =>
+//             <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
+//                 <Allnews
+//                     newdata={newdata}
+//                     key={newdata._id} />
+//             </div>
+//         )
+// }
+
+

@@ -17,12 +17,12 @@ const EveryNews = ({ newdata }) => {
     }
 
     const deleteNews = async () => {
-        try{
+        try {
             await axios.delete(`http://localhost:5050/api/news/${_id}`,);
             swal("Successfully Deleted", "Your service has been successfully Deleted!", "success");
             window.location.replace("/manage-news");
         }
-        catch(err){
+        catch (err) {
             swal("Failed!", "You can delete only your added Service!", "error", { dangerMode: true });
             console.log(err);
         }
@@ -43,7 +43,11 @@ const EveryNews = ({ newdata }) => {
                     <button className="button-fix" onClick={() => deleteNews(_id)}>Delete</button>
                     <button className="button-fix" onClick={openModal} className="button-fix">Edit</button>
                 </div>
-                <EditPost modalIsOpen={modalIsOpen} closeModal={closeModal} newdata={newdata} />
+                <EditPost
+                    modalIsOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    newdata={newdata}
+                />
             </div>
         </div>
     );

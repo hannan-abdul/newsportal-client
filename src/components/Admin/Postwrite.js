@@ -11,7 +11,7 @@ const Postwrite = () => {
   const [photo, setPhoto] = useState(null);
   const history = useHistory();
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     // console.log(data);
     const newsData = {
       title: data.title,
@@ -21,7 +21,7 @@ const Postwrite = () => {
       photo: photo,
     };
     // https://warm-ocean-89697.herokuapp.com
-    try{
+    try {
       const res = await axios({
         method: 'post',
         url: `http://localhost:5050/api/news/addNews`,
@@ -31,7 +31,7 @@ const Postwrite = () => {
       console.log('server side response', res)
       res && history.push("/manage-news")
     }
-    catch(err){
+    catch (err) {
       console.log(err)
     }
   }

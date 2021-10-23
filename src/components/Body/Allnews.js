@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 
 const Allnews = ({ newdata }) => {
     const { title, photo, category, author, createdAt, _id } = newdata;
+    
     return (
         <div className=''>
             <img style={{ "width": "100%" }} src={photo} alt="image" />
