@@ -18,7 +18,7 @@ const EveryNews = ({ newdata }) => {
 
     const deleteNews = async () => {
         try {
-            await axios.delete(`http://localhost:5050/api/news/${_id}`,);
+            await axios.delete(`https://warm-ocean-89697.herokuapp.com/api/news/${_id}`,);
             swal("Successfully Deleted", "Your service has been successfully Deleted!", "success");
             window.location.replace("/manage-news");
         }

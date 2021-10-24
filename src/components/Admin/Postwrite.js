@@ -7,7 +7,7 @@ import DashboardMenu from '../Dashboard/DashboardMenu/DashboardMenu';
 import './Postwrite.css';
 
 const Postwrite = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [photo, setPhoto] = useState(null);
   const history = useHistory();
 
@@ -20,11 +20,10 @@ const Postwrite = () => {
       category: data.category,
       photo: photo,
     };
-    // https://warm-ocean-89697.herokuapp.com
     try {
       const res = await axios({
         method: 'post',
-        url: `http://localhost:5050/api/news/addNews`,
+        url: `https://warm-ocean-89697.herokuapp.com/api/news/addNews`,
         data: newsData
       })
       swal("Successfully Added", "Your news has been successfully added!", "success");

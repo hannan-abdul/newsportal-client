@@ -11,7 +11,7 @@ const NewsDetails = () => {
     useEffect(() => {
         const getSingleNews = async () => {
             try {
-                const res = await axios.get('http://localhost:5050/api/news/' + newsKey);
+                const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/news/' + newsKey);
                 setNewsdata(res.data)
             }
             catch (err) {

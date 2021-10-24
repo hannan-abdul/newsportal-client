@@ -14,7 +14,7 @@ const Body = () => {
     useEffect(() => {
         const getAllNews = async () => {
             try {
-                const res = await axios.get('http://localhost:5050/api/news/allnews');
+                const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/news/allnews');
                 dispatch(newsAction(res.data))
                 // setCategory(res.data)
             }

@@ -37,7 +37,7 @@ const Login = () => {
         try {
             const res = await axios({
                 method: 'post',
-                url: 'http://localhost:5050/api/auth/login',
+                url: 'https://warm-ocean-89697.herokuapp.com/api/auth/login',
                 data: userData
             });
             console.log(res);

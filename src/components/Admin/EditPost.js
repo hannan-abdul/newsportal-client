@@ -38,7 +38,7 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
     try {
       const res = await axios({
         method: 'put',
-        url: `http://localhost:5050/api/news/${_id}`,
+        url: `https://warm-ocean-89697.herokuapp.com/api/news/${_id}`,
         data: serviceUpdateData
       });
       console.log('server side response', res)

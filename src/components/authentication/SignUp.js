@@ -23,7 +23,7 @@ const SignUp = () => {
         try {
             const res = await axios({
                 method: 'post',
-                url: 'http://localhost:5050/api/auth/register',
+                url: 'https://warm-ocean-89697.herokuapp.com/api/auth/register',
                 data: userData
             });
             console.log('server side response', res)
