@@ -7,7 +7,7 @@ const SingleNews = ({ newdata }) => {
         <div className="single-news-fix">
             <h1>{title}</h1>
             <div className="py-4">
-                <img src={photo} alt="photo" />
+                <img src={photo} alt="single news" />
             </div>
             <div className="d-flex justify-content-between">
                 <div className="text-start">

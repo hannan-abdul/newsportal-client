@@ -23,7 +23,8 @@ const Body = () => {
             }
         }
         getAllNews()
-    }, [])
+    }, [newcategory])
+    console.log(newsDatas)
 
     const allFilterNews = (newsCategory) => {
         const updatedItems = newsDatas.filter((news) => news.category === newsCategory)

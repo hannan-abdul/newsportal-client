@@ -7,7 +7,7 @@ const Allnews = ({ newdata }) => {
     
     return (
         <div className=''>
-            <img style={{ "width": "100%" }} src={photo} alt="image" />
+            <img style={{ "width": "100%" }} src={photo} alt="new image" />
             <h4>{title}</h4>
             <div className='d-flex justify-content-between'>
                 <div><p>By: {author}</p></div>
