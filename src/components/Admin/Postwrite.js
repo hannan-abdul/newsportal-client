@@ -59,7 +59,15 @@ const Postwrite = () => {
       <div>
         <h2 className="my-4">New Post</h2>
         <form className='form' onSubmit={handleSubmit(onSubmit)}>
-          <input className="image-input" type='file' onChange={handleImageUpload} />
+          <div className="d-flex">
+            <div>
+              {photo ? <img style={{ width: '60px', marginRight: "10px" }} src={photo} alt="Banner img" /> :
+                <img style={{ width: '60px', marginRight: "10px" }} src="https://i.ibb.co/Cm61Z60/instagram.png" alt="Banner img" />}
+            </div>
+            <div>
+              <input className="image-input" type='file' onChange={handleImageUpload} />
+            </div>
+          </div>
           <br />
           <input type='text' placeholder="News Title" {...register("title")} />
           <br />

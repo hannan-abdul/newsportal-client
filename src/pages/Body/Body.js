@@ -8,11 +8,8 @@ import axios from 'axios';
 const Body = () => {
     const dispatch = useDispatch();
     const newsDatas = useSelector((state) => state.newsdata.allnewsdetails);
-    // const categoryData = useSelector((state) => state.newsdata.allnewsdetails[0]);
-    // console.log(categoryData)
     // const [category, setCategory] = useState([]);
     const [newcategory, setNewCategory] = useState([]);
-
 
     useEffect(() => {
         const getAllNews = async () => {
