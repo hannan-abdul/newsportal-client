@@ -8,7 +8,7 @@ export const dashboard_nav =[
     },
     {
         id: 2,
-        path: "/write-news",
+        path: "/dashboard/write-news",
         pathname: "Write News",
         role: ['admin']
     },

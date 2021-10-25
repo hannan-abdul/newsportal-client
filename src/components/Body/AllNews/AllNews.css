@@ -1,0 +1,8 @@
+.all-img-fix {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.all-img-title:hover {
+    color: gray !important;
+}

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { catAction } from '../../Redux/action/catDataAction';
 import './Sidebar.css'
 
 const SideBar = () => {
+
     return (
         <div className='right-sidebar'>
             <div className="sidebarItem">

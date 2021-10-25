@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import SideBar from '../SideBar/SideBar';
-import SingleNews from './SingleNews';
+import SideBar from '../../SideBar/SideBar';
+import SingleNews from '../SingleNews/SingleNews';
 
 const NewsDetails = () => {
     const { newsKey } = useParams();

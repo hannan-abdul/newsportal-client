@@ -1,6 +1,11 @@
 .card-fix{
     margin: 10px;
     padding: 10px;
-    border-radius: 5px !important;
-    box-shadow: 2px 2px 2px grey;
+    /* border-radius: 5px !important;
+    box-shadow: 2px 2px 2px grey; */
+    border: 1px solid gray;
+    width: 46% !important;
+}
+.main-body-fix{
+    box-shadow:  2px 4px 11px grey;
 }

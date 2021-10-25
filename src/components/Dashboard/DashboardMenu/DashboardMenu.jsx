@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faGripHorizontal } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import './DashboardMenu.css'
+import './DashboardMenu.css';
 import { dashboard_nav } from '../../../LocalData/LocalData';
 // import { useDispatch, useSelector } from 'react-redux';
 

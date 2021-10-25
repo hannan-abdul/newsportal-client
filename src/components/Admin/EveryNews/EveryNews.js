@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './EveryNews.css';
 import swal from 'sweetalert';
-import EditPost from './EditPost';
+import EditPost from '../EditPost/EditPost';
 
 const EveryNews = ({ newdata }) => {
     const { title, author, category, _id } = newdata;

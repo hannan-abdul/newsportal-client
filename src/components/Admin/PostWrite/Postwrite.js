@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import swal from 'sweetalert';
-import DashboardMenu from '../Dashboard/DashboardMenu/DashboardMenu';
+import DashboardMenu from '../../Dashboard/DashboardMenu/DashboardMenu';
 import './Postwrite.css';
 
 const Postwrite = () => {

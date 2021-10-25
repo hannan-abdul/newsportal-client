@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Allnews from '../../components/Body/Allnews';
+import Allnews from '../../components/Body/AllNews/Allnews';
 import { useDispatch, useSelector } from 'react-redux';
 import './Body.css'
 import { newsAction } from '../../Redux/action/newsDataAction';
@@ -23,8 +23,7 @@ const Body = () => {
             }
         }
         getAllNews()
-    }, [newcategory])
-    console.log(newsDatas)
+    }, [])
 
     const allFilterNews = (newsCategory) => {
         const updatedItems = newsDatas.filter((news) => news.category === newsCategory)
@@ -34,14 +33,19 @@ const Body = () => {
     return (
         <div className="container text-center mt-5">
             <div>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Business')}>Business</button>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Entertainment')}>Entertainment</button>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Politics')}>Politics</button>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Sports')}>Sports</button>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('International')}>international</button>
-                <button className="btn-primary ms-2 mb-2" onClick={() => allFilterNews('Other')}>Other</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('Business')}>Business</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('Entertainment')}>Entertainment</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('Politics')}>Politics</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('Sports')}>Sports</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('International')}>international</button>
+                <button className="btn btn-secondary ms-2 mb-2" onClick={() => allFilterNews('Other')}>Other</button>
             </div>
-            <div className='row justify-content-between'>
+            <div className='row justify-content-between text-center mt-5 mb-5 pb-3 pt-3 main-body-fix'>
+                {
+                    newsDatas.length === 0 && <div className="spinner-border text-primary" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+                }
                 {
                     newcategory.length ? newcategory.map(newdata =>
                         <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
@@ -50,12 +54,12 @@ const Body = () => {
                                 key={newdata._id} />
                         </div>
                     ) : newsDatas.map(newdata =>
-                            <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
-                                <Allnews
-                                    newdata={newdata}
-                                    key={newdata._id} />
-                            </div>
-                        )
+                        <div className="col-lg-5 col-md-4 col-sm-12 card-fix">
+                            <Allnews
+                                newdata={newdata}
+                                key={newdata._id} />
+                        </div>
+                    )
                 }
             </div>
         </div>
@@ -84,5 +88,7 @@ export default Body;
 //             </div>
 //         )
 // }
+
+
 
 

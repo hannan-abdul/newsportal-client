@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import DashboardMenu from '../Dashboard/DashboardMenu/DashboardMenu';
-import EveryNews from './EveryNews';
+import DashboardMenu from '../../Dashboard/DashboardMenu/DashboardMenu';
+import EveryNews from '../EveryNews/EveryNews';
 
 const ManageNews = () => {
     const newsDatas = useSelector((state)=> state.newsdata.allnewsdetails);
@@ -16,7 +16,6 @@ const ManageNews = () => {
                 {
                     newsDatas.map(newdata => <EveryNews newdata={newdata} />)
                 }
-
             </div>
         </section>
     );

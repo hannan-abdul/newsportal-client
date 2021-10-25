@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import swal from 'sweetalert';
-import './EveryNews.css';
+import '../EveryNews/EveryNews.css';
 
 const customStyles = {
   content: {
@@ -17,8 +17,8 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
-Modal.setAppElement('#root');
 
+Modal.setAppElement('#root');
 const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
   // const email = useSelector((state) => state.auth.userdetails.email);
   const { title, author, description, category, _id } = newdata;
@@ -65,7 +65,6 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
       .catch(function (error) {
         console.log(error);
       });
-
   }
 
   return (

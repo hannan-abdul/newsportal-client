@@ -95,7 +95,7 @@ const Login = () => {
                 <h3 className="mt-3">You Must Log In</h3>
                 <button className="inner-button-fix" onClick={handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
                 <div>
-                    <div className="mb-3">
+                    <div className="mb-3 mt-4">
                         Login With Email
                     </div>
                     <div className="mt-8">

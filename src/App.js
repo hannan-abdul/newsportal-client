@@ -1,12 +1,12 @@
 import './App.css';
 import Home from '../src/pages/Home/Home';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Navigation from './components/Home/Navigation';
+import Navigation from './components/Home/Navigation/Navigation';
 import Login from './components/authentication/Login';
 import PrivateRoute from './components/authentication/PrivateRoute';
-import NewsDetails from './components/Body/NewsDetails';
-import Postwrite from './components/Admin/Postwrite';
-import ManageNews from './components/Admin/ManageNews';
+import NewsDetails from './components/Body/NewsDetails/NewsDetails';
+import Postwrite from './components/Admin/PostWrite/Postwrite';
+import ManageNews from './components/Admin/ManageNews/ManageNews';
 import SignUp from './components/authentication/SignUp';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
@@ -32,7 +32,7 @@ function App() {
             <Route path="/contact">
               <Contact />
             </Route>
-            <PrivateRoute path="/write-news">
+            <PrivateRoute exact path="/dashboard/write-news">
               <Postwrite />
             </PrivateRoute>
             <Route path="/newsdetail/:newsKey">
