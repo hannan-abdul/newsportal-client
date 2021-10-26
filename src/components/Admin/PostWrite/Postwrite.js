@@ -1,20 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import swal from 'sweetalert';
 import DashboardMenu from '../../Dashboard/DashboardMenu/DashboardMenu';
 import './Postwrite.css';
 
 const Postwrite = () => {
+  const email = useSelector((state) => state.auth.userdetails.email);
+  console.log(email)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [photo, setPhoto] = useState(null);
   const history = useHistory();
 
   const onSubmit = async (data) => {
-    // console.log(data);
     const newsData = {
       title: data.title,
+      email: email,
       author: data.author,
       description: data.description,
       category: data.category,

@@ -10,12 +10,12 @@ export const dashboard_nav =[
         id: 2,
         path: "/dashboard/write-news",
         pathname: "Write News",
-        role: ['admin']
+        role: ['admin', 'user']
     },
     {
         id: 3,
         path: "/manage-news",
         pathname: "Manage News",
-        role: ['admin']
+        role: ['admin','user']
     }
 ]

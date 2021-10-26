@@ -3,11 +3,12 @@ import axios from 'axios';
 import './EveryNews.css';
 import swal from 'sweetalert';
 import EditPost from '../EditPost/EditPost';
+import { useSelector } from 'react-redux';
 
 const EveryNews = ({ newdata }) => {
     const { title, author, category, _id } = newdata;
     const [modalIsOpen, setIsOpen] = useState(false);
-    // const email = useSelector((state) => state.auth.userdetails.email);
+    const email = useSelector((state) => state.auth.userdetails.email);
     // modal function 
     function openModal() {
         setIsOpen(true);
@@ -18,12 +19,14 @@ const EveryNews = ({ newdata }) => {
 
     const deleteNews = async () => {
         try {
-            await axios.delete(`https://warm-ocean-89697.herokuapp.com/api/news/${_id}`,);
-            swal("Successfully Deleted", "Your service has been successfully Deleted!", "success");
+            await axios.delete(`https://warm-ocean-89697.herokuapp.com/api/news/${_id}`,{
+                data: {email: email}
+            });
+            swal("Successfully Deleted", "Your News has been successfully Deleted!", "success");
             window.location.replace("/manage-news");
         }
         catch (err) {
-            swal("Failed!", "You can delete only your added Service!", "error", { dangerMode: true });
+            swal("Failed!", "You can delete only your added News!", "error", { dangerMode: true });
             console.log(err);
         }
     }

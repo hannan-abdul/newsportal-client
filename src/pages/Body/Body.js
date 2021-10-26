@@ -23,7 +23,7 @@ const Body = () => {
             }
         }
         getAllNews()
-    }, [])
+    }, [newsDatas])
 
     const allFilterNews = (newsCategory) => {
         const updatedItems = newsDatas.filter((news) => news.category === newsCategory)
@@ -42,7 +42,7 @@ const Body = () => {
             </div>
             <div className='row justify-content-between text-center mt-5 mb-5 pb-3 pt-3 main-body-fix'>
                 {
-                    newsDatas.length === 0 && <div className="spinner-border text-primary" role="status">
+                    newsDatas.length === 0 && <div className="spinner-border m-auto text-primary" role="status">
                         <span class="visually-hidden"></span>
                     </div>
                 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
-// import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import swal from 'sweetalert';
 import '../EveryNews/EveryNews.css';
+import { useSelector } from 'react-redux';
 
 const customStyles = {
   content: {
@@ -20,7 +20,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
-  // const email = useSelector((state) => state.auth.userdetails.email);
+  const email = useSelector((state) => state.auth.userdetails.email);
   const { title, author, description, category, _id } = newdata;
   const { register, handleSubmit } = useForm();
   const history = useHistory();
@@ -29,6 +29,7 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
   const onSubmit = async data => {
     const serviceUpdateData = {
       title: data.title,
+      email: email,
       author: data.author,
       description: data.description,
       category: data.category,
@@ -42,11 +43,11 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
         data: serviceUpdateData
       });
       console.log('server side response', res)
-      swal("Successfully updated", "Your service has been successfully updated!", "success");
+      swal("Successfully updated", "Your News has been successfully updated!", "success");
       history.push("/manage-news")
     }
     catch (err) {
-      swal("Failed!", "You can update only your added Service!", "error", { dangerMode: true });
+      swal("Failed!", "You can update only your added News!", "error", { dangerMode: true });
       console.log(err);
     }
   };
