@@ -44,7 +44,7 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
       });
       console.log('server side response', res)
       swal("Successfully updated", "Your News has been successfully updated!", "success");
-      history.push("/manage-news")
+      history.push("/dashboard/manage-news")
     }
     catch (err) {
       swal("Failed!", "You can update only your added News!", "error", { dangerMode: true });

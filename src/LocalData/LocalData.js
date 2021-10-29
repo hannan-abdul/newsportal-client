@@ -14,8 +14,14 @@ export const dashboard_nav =[
     },
     {
         id: 3,
-        path: "/manage-news",
+        path: "/dashboard/manage-news",
         pathname: "Manage News",
         role: ['admin','user']
+    },
+    {
+        id: 4,
+        path: "/dashboard/manage-category",
+        pathname: "Manage Category",
+        role: ['admin']
     }
 ]

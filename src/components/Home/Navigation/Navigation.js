@@ -8,12 +8,11 @@ import { logOutAction } from '../../../Redux/action/authAction';
 const Navigation = () => {
     const email = useSelector((state) => state.auth.userdetails.email);
     const dispatch = useDispatch()
-    const history = useHistory();
     // const Path = location.pathname.split('/')[1];
 
     const handleLogout = ()=>{
         dispatch((logOutAction()))
-        history.replace('/')
+        window.location.replace('/')
     }
 
     return (

@@ -31,7 +31,7 @@ const Postwrite = () => {
       })
       swal("Successfully Added", "Your news has been successfully added!", "success");
       console.log('server side response', res)
-      res && history.push("/manage-news")
+      res && history.push("/dashboard/manage-news")
     }
     catch (err) {
       console.log(err)

@@ -10,6 +10,7 @@ import ManageNews from './components/Admin/ManageNews/ManageNews';
 import SignUp from './components/authentication/SignUp';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
+import ManageCategory from './components/Admin/ManageCategory/ManageCategory';
 
 function App() {
   return (
@@ -38,9 +39,12 @@ function App() {
             <Route path="/newsdetail/:newsKey">
               <NewsDetails />
             </Route>
-            <Route path="/manage-news">
+            <PrivateRoute path="/dashboard/manage-news">
               <ManageNews />
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/manage-category">
+              <ManageCategory />
+            </PrivateRoute>
           </Switch>
         </Router>
     </div>

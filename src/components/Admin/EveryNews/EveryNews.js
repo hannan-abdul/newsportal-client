@@ -23,7 +23,7 @@ const EveryNews = ({ newdata }) => {
                 data: {email: email}
             });
             swal("Successfully Deleted", "Your News has been successfully Deleted!", "success");
-            window.location.replace("/manage-news");
+            // window.location.replace("/dashboard/manage-news");
         }
         catch (err) {
             swal("Failed!", "You can delete only your added News!", "error", { dangerMode: true });
@@ -33,7 +33,7 @@ const EveryNews = ({ newdata }) => {
     return (
         <div>
             <div className="row row-fix justify-content-center align-items-center">
-                <div className="col-md-2">
+                <div className="col-md-2 text-start">
                     <p>{title}</p>
                 </div>
                 <div className="col-md-3">
