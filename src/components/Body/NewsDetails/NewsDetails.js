@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import SideBar from '../../SideBar/SideBar';
 import SingleNews from '../SingleNews/SingleNews';
+import './NewsDetails.css';
 
 const NewsDetails = () => {
     const { newsKey } = useParams();
@@ -23,10 +24,10 @@ const NewsDetails = () => {
 
     return (
         <div className="container d-flex">
-            <div className="col-9">
+            <div className="col-md-9">
                 <SingleNews newdata={newdata}></SingleNews>
             </div>
-            <div className="col-3">
+            <div className="col-md-3 post-sidebar-fix">
                 <SideBar />
             </div>
         </div>

@@ -1,10 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import './Navigtion.css';
+import { useHistory } from 'react-router';
+import { logOutAction } from '../../../Redux/action/authAction';
 
 const Navigation = () => {
     const email = useSelector((state) => state.auth.userdetails.email);
+    const dispatch = useDispatch()
+    const history = useHistory();
+    // const Path = location.pathname.split('/')[1];
+
+    const handleLogout = ()=>{
+        dispatch((logOutAction()))
+        history.replace('/')
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
@@ -32,7 +43,7 @@ const Navigation = () => {
                         {
                             email ?
                                 <li className="nav-item auth">
-                                    <Link className="nav-link me-2">Logout</Link>
+                                    <Link className="nav-link me-2" onClick={handleLogout}>Logout</Link>
                                 </li>
                                 :
                                 <li className="nav-item auth">

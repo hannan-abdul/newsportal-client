@@ -15,7 +15,7 @@ export const authSlice = createSlice({
             state.userdetails = action.payload
         },
         logOut: (state, action) => {
-            state.userdetails = action.payload
+            state.userdetails = {}
         }
     },
 })
