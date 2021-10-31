@@ -9,3 +9,11 @@
 .main-body-fix{
     box-shadow:  2px 4px 11px grey;
 }
+.all-img-fix {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.all-img-title:hover {
+    color: gray !important;
+}

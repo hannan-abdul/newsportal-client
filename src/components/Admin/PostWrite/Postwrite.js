@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -13,6 +13,20 @@ const Postwrite = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [photo, setPhoto] = useState(null);
   const history = useHistory();
+  const[category, setCategory] =useState([])
+
+  useEffect(() => {
+    const getAllCategory = async () => {
+        try {
+            const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
+            setCategory(res.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+    getAllCategory()
+}, [])
 
   const onSubmit = async (data) => {
     const newsData = {
@@ -79,12 +93,15 @@ const Postwrite = () => {
           <br />
           <select placeholder="Category" className="box form-control responsive-input" {...register("category")} required>
             <option value="" disabled selected>Select Category</option>
-            <option value="Business">Business</option>
+            {
+              category.map(cat=>(<option value={cat.name}>{cat.name}</option>))
+            }
+            {/* <option value="Business">Business</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Politics">Politics</option>
             <option value="Sports">Sports</option>
             <option value="International">International</option>
-            <option value="Other">Other</option>
+            <option value="Other">Other</option> */}
           </select>
           <br />
           <input className='custom-btn' type="submit" />

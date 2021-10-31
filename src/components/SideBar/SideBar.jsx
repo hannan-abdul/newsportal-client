@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { catAction } from '../../Redux/action/catDataAction';
+import { Link, useLocation } from 'react-router-dom';
+import { getCategoriesAction } from '../../Redux/action/catDataAction';
 import './Sidebar.css'
 
 const SideBar = () => {
+    const categories = useSelector((state) => state.categories.item)
+    const location = useLocation();
+    const Path = location.pathname.split('/')[1];
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        const getAllCategory = async () => {
+            try {
+                const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
+                dispatch((getCategoriesAction(res.data)))
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        getAllCategory()
+    }, [Path, categories])
+    // console.log("category", categories)
     return (
         <div className='right-sidebar'>
             <div className="sidebarItem">
@@ -19,29 +38,11 @@ const SideBar = () => {
             <div className="sidebarItem text-start">
                 <span className="sidebarTitle">CATEGORIES</span>
                 <ul className="sidebarList text-start">
-                    <li>Business</li>
-                    <li>Entertainment</li>
-                    <li>Politics</li>
-                    <li>Sports</li>
-                    <li>International</li>
-                    <li>Other</li>
-                    {/* {
-                        cats.map((c) => (
-                            <Link className="link" to={`/?cat=${c.name}`}>
-                                <li className="sidebarListItem">{c.name}</li>
-                            </Link>
-                        ))
-                    } */}
+                    <Link to="/"><li>All</li></Link>
+                    {
+                        categories.map(catdata => <Link to={`/category/${catdata.name.replace("&", "")}`}><li>{catdata.name}</li></Link>)
+                    }
                 </ul>
-            </div>
-            <div className="sidebarItem">
-                <span className="sidebarTitle">FOLLOW US</span>
-                <div className="sidebarSocial">
-                    <i className="sidebarIcon fab fa-facebook-square"></i>
-                    <i className="sidebarIcon fab fa-twitter-square"></i>
-                    <i className="sidebarIcon fab fa-pinterest-square"></i>
-                    <i className="sidebarIcon fab fa-instagram-square"></i>
-                </div>
             </div>
         </div>
     );

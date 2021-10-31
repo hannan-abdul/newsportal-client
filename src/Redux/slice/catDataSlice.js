@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const catSlice = createSlice({
-    name: 'catdata',
+export const categorySlice = createSlice({
+    name: 'categories',
     initialState: {
-        catnewsdetails: []
+        item: []
     },
     reducers: {
-        setcatdata: (state, action) => {
-            state.catnewsdetails = action.payload
+        setcategories: (state, action) => {
+            state.item = action.payload
         },
+        filterCategories: (state, action) => {
+            state.item = state.items.filter((item) => item.name === action.payload);
+        }
     }
 })
