@@ -7,7 +7,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: ['categories','newsdata','catData'],
+  blacklist: [],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

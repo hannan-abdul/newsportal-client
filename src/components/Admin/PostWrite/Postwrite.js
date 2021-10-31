@@ -9,24 +9,10 @@ import './Postwrite.css';
 
 const Postwrite = () => {
   const email = useSelector((state) => state.auth.userdetails.email);
-  console.log(email)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [photo, setPhoto] = useState(null);
   const history = useHistory();
-  const[category, setCategory] =useState([])
-
-  useEffect(() => {
-    const getAllCategory = async () => {
-        try {
-            const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
-            setCategory(res.data)
-        }
-        catch (err) {
-            console.log(err)
-        }
-    }
-    getAllCategory()
-}, [])
+  const categories = useSelector((state) => state.categories.item);
 
   const onSubmit = async (data) => {
     const newsData = {
@@ -94,14 +80,8 @@ const Postwrite = () => {
           <select placeholder="Category" className="box form-control responsive-input" {...register("category")} required>
             <option value="" disabled selected>Select Category</option>
             {
-              category.map(cat=>(<option value={cat.name}>{cat.name}</option>))
+              categories.map(cat=>(<option value={cat.name}>{cat.name}</option>))
             }
-            {/* <option value="Business">Business</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Politics">Politics</option>
-            <option value="Sports">Sports</option>
-            <option value="International">International</option>
-            <option value="Other">Other</option> */}
           </select>
           <br />
           <input className='custom-btn' type="submit" />

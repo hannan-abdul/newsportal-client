@@ -21,6 +21,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
   const email = useSelector((state) => state.auth.userdetails.email);
+  const categories = useSelector((state) => state.categories.item);
   const { title, author, description, category, _id } = newdata;
   const { register, handleSubmit } = useForm();
   const history = useHistory();
@@ -88,12 +89,9 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
           <br />
           <select placeholder="Category" defaultValue={category} className="box form-control responsive-input" {...register("category")} required>
             <option value="" disabled selected>Select Category</option>
-            <option value="Business">Business</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Politics">Politics</option>
-            <option value="Sports">Sports</option>
-            <option value="International">International</option>
-            <option value="Other">Other</option>
+            {
+              categories.map(cat=>(<option value={cat.name}>{cat.name}</option>))
+            }
           </select>
           <br />
           <input className='custom-btn' type="submit" />

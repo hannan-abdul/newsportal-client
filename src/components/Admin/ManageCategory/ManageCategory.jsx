@@ -1,30 +1,32 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { getCategoriesAction } from '../../../Redux/action/catDataAction';
 import DashboardMenu from '../../Dashboard/DashboardMenu/DashboardMenu';
 import EvaryCategory from '../EvaryCategory/EvaryCategory';
 import './ManageCategory.css';
 
 const ManageCategory = () => {
-    const [managecategory, setManagecategory] = useState([]);
     const [CategoryName, setName] = useState();
     const location = useLocation();
     const email = useSelector((state) => state.auth.userdetails.email);
+    const categories = useSelector((state) => state.categories.item);
+    const dispatch = useDispatch();
     const Path = location.pathname.split('/')[1];
 
     useEffect(() => {
         const getAllNews = async () => {
             try {
                 const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
-                setManagecategory(res.data)
+                dispatch(getCategoriesAction(res.data))
             }
             catch (err) {
                 console.log(err)
             }
         }
         getAllNews()
-    }, [managecategory, Path])
+    }, [categories, Path])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -65,7 +67,7 @@ const ManageCategory = () => {
                 </div>
                 <h3>Manage News</h3>
                 {
-                    managecategory.map(catdata => <EvaryCategory catdata={catdata} />)
+                    categories.map(catdata => <EvaryCategory catdata={catdata} />)
                 }
             </div>
         </section>

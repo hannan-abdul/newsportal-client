@@ -1,21 +1,18 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { getCategoriesAction } from '../../Redux/action/catDataAction';
 import './Sidebar.css'
 
 const SideBar = () => {
-    const categories = useSelector((state) => state.categories.item)
     const location = useLocation();
     const Path = location.pathname.split('/')[1];
-    const dispatch = useDispatch();
+    const [categories, setCategories]= useState([])
 
     useEffect(() => {
         const getAllCategory = async () => {
             try {
                 const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
-                dispatch((getCategoriesAction(res.data)))
+                setCategories(res.data)
             }
             catch (err) {
                 console.log(err)
@@ -23,7 +20,7 @@ const SideBar = () => {
         }
         getAllCategory()
     }, [Path, categories])
-    // console.log("category", categories)
+    
     return (
         <div className='right-sidebar'>
             <div className="sidebarItem">
