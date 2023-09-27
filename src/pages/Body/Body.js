@@ -16,7 +16,7 @@ const Body = () => {
     useEffect(() => {
         const getAllNews = async () => {
             try {
-                const res = await axios.get('https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app');
+                const res = await axios.get('https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/news/allnews');
                 // setNewsdata(res.data)
                 dispatch(newsAction(res.data))
             }
