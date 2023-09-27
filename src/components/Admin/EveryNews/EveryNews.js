@@ -19,7 +19,7 @@ const EveryNews = ({ newdata }) => {
 
     const deleteNews = async () => {
         try {
-            await axios.delete(`https://warm-ocean-89697.herokuapp.com/api/news/${_id}`,{
+            await axios.delete(`https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/news/${_id}`,{
                 data: {email: email}
             });
             swal("Successfully Deleted", "Your News has been successfully Deleted!", "success");
