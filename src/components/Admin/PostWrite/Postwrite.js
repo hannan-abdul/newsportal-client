@@ -26,7 +26,7 @@ const Postwrite = () => {
     try {
       const res = await axios({
         method: 'post',
-        url: `https://warm-ocean-89697.herokuapp.com/api/news/addnews`,
+        url: `https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/news/addnews`,
         data: newsData
       })
       swal("Successfully Added", "Your news has been successfully added!", "success");
