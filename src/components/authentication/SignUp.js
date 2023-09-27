@@ -23,7 +23,7 @@ const SignUp = () => {
         try {
             const res = await axios({
                 method: 'post',
-                url: 'https://warm-ocean-89697.herokuapp.com/api/auth/register',
+                url: 'https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/auth/register',
                 data: userData
             });
             console.log('server side response', res)
