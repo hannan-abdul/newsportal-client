@@ -12,7 +12,7 @@ const NewsDetails = () => {
     useEffect(() => {
         const getSingleNews = async () => {
             try {
-                const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/news/' + newsKey);
+                const res = await axios.get('https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/news/' + newsKey);
                 setNewsdata(res.data)
             }
             catch (err) {
