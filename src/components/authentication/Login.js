@@ -37,7 +37,7 @@ const Login = () => {
         try {
             const res = await axios({
                 method: 'post',
-                url: 'https://warm-ocean-89697.herokuapp.com/api/auth/login',
+                url: 'https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/auth/login',
                 data: userData
             });
             console.log(res);
