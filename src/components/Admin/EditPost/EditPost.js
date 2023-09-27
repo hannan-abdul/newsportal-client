@@ -40,7 +40,7 @@ const ModalForm = ({ modalIsOpen, closeModal, newdata }) => {
     try {
       const res = await axios({
         method: 'put',
-        url: `https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/${_id}`,
+        url: `https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/news/${_id}`,
         data: serviceUpdateData
       });
       console.log('server side response', res)
