@@ -18,7 +18,7 @@ const ManageCategory = () => {
     useEffect(() => {
         const getAllNews = async () => {
             try {
-                const res = await axios.get('https://warm-ocean-89697.herokuapp.com/api/categories/all');
+                const res = await axios.get('https://newsportal-server-i4kcjaat3-shohas563-gmailcom.vercel.app/api/categories/all');
                 dispatch(getCategoriesAction(res.data))
             }
             catch (err) {
